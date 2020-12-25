@@ -4,6 +4,11 @@ pipeline {
   PATH = "${PATH}:${getTerraformPath()}"
 }
     stages {
+        stage('Terraform init provider and backend'){
+            steps {
+                sh 'terraform init'
+            }
+        }
         stage('Terraform init and apply -dev') {
             steps {
                 sh label: '', returnStatus: true, script: 'terraform workspace new dev'
