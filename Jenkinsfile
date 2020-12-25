@@ -4,6 +4,13 @@ pipeline {
   PATH = "${PATH}:${getTerraformPath()}"
 }
     stages {
+        stage('Create S3 Bucket if not exist') {
+            steps {
+                script{
+                    createS3Bucket('fatih-terraform-backup1')
+                }
+            }
+        }
         stage('Terraform init and apply -dev') {
             steps {
                 sh 'terraform init'
@@ -27,4 +34,8 @@ pipeline {
 def getTerraformPath() {
     def tfHome = tool name: 'terraform-14', type: 'terraform'
     return tfHome
+}
+
+def createS3Bucket(bucketName) {
+    sh returnStatus: true, script: "aws s3 mb s3://${bucketName}"
 }
