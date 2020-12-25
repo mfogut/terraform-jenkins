@@ -6,6 +6,7 @@ pipeline {
     stages {
         stage('Terraform init provider and backend'){
             steps {
+                sh 'terraform workspace select default'
                 sh 'terraform init'
             }
         }
