@@ -3,18 +3,12 @@ pipeline {
     environment {
   PATH = "${PATH}:${getTerraformPath()}"
 }
-
-
     stages {
-        stage('Terraform init') {
+        stage('Terraform init and apply -dev') {
             steps {
+                sh 'terraform workspace new dev'
                 sh 'terraform init'
             }        
-        }
-        stage('Terraform Apply') {
-            steps {
-                sh 'terraform apply --auto-approve'
-            }
         }
     }
 }
