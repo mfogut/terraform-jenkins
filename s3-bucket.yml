@@ -9,6 +9,6 @@
 
   - name: Create S3 bucket
     s3_bucket:
-      name: fatih-terraform-backup2
+      name: fatih-terraform-backup1
       state: present
     become: yes
