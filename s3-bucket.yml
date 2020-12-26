@@ -1,13 +1,14 @@
 --- 
 - hosts: localhost 
-  become: yes
   tasks:
   - name: Install boto3
     pip:
       name: boto3
       state: present
+    become: yes
 
   - name: Create S3 bucket
     s3_bucket:
       name: fatih-terraform-backup1
       state: present
+    become: yes
