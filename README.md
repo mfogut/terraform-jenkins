@@ -27,3 +27,18 @@
 command.
     - ![](solution1.jpg)
     - ![](solution2.jpg)
+
+- Issue 2 - I already installed ansible to Jenkins Box and also installed Ansible plugin to Jenkins.However I received "ansible-playbook" not found error.
+    - ![](error4.jpg)
+
+- Solution 2 - In order to fix this issue I add executable ansible file location to Path to ansible executables directory and, add ansible home environment to Jenkinsfile
+    - ![](solution3.jpg)
+
+- Issue 3 - I am running ansible-playbook with sudo privilege. Jenkins console output error mesage "module_stderr": "sudo: a password is required"
+    - ![](error5.jpg)
+
+- Solution 3 - Jenkins running everything under the "jenkins" user. In order to solve this problem we have to add "jenkins" user to sudoers file.
+    - ssh -i <pemfile> <username@ipaddress>
+    - visudo --> jenkins    ALL=(ALL)   NOPASSWD:ALL
+    - ![](solution4.jpg)
+    - ![](solution5.jpg)
