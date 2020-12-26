@@ -1,8 +1,5 @@
 --- 
 - hosts: localhost 
-  become: yes
-  become_method: su
-  become_user: ec2-user
   tasks:
   - name: Install boto3
     pip:
