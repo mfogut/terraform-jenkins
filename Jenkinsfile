@@ -6,7 +6,6 @@ pipeline {
     stages {
         stage('S3 Create Bucket') {
             steps {
-                sh "sudo su -"
                 sh "ansible-playbook s3-bucket.yml"
             }
         }
