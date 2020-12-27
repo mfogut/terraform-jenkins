@@ -4,7 +4,7 @@ provider "aws" {
 
 terraform {
     backend "s3" {
-        bucket = "fatih-terraform-backup"
+        bucket = "fatih-terraform-backup1"
         key = "terraform.tfstate"
         region = "us-east-1"
         dynamodb_table = "tf-backup"
