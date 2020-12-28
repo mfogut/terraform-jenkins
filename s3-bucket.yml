@@ -9,6 +9,16 @@
 
   - name: Create S3 bucket
     s3_bucket:
-      name: fatih-terraform-backup2
+      name: fatih-terraform-backup
       state: present
     become: yes
+
+  - name: Create dynamo table with primary key
+    dynamodb_table:
+      name: tf-backup
+      region: us-east-1
+      state: present
+      hash_key_name: LockID
+      hash_key_type: STRING
+      read_capacity: 2
+      write_capacity: 2
