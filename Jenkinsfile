@@ -4,7 +4,7 @@ pipeline {
         PATH = "${PATH}:${getTerraformPath()}:${getAnsiblePath()}"
     }
     stages{
-        stage('S3 Create Bucket') {
+        stage('Create S3 Bucket and Dynamodb Table') {
             steps {
                 sh "ansible-playbook s3-bucket.yml"
             }
