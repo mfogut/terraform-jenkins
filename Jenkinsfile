@@ -9,13 +9,17 @@ pipeline {
                 sh "ansible-playbook s3-bucket.yml"
             }
         }
+        stage('First initalize') {
+            steps{
+                sh 'terraform init'
+            }
+        }
         stage('Terraform init and apply -dev') {
             steps {
-                sh 'terraform init'
                 sh label: '', returnStatus: true, script: 'terraform workspace new dev'
                 sh 'terraform init'
                 sh 'terraform workspace select dev'
-                sh "terraform apply -var-file=dev.tfvars --auto-approve"
+                sh "ansible-playbook ansterraform.yml"
             }        
         }
         stage('Terraform init and apply -prod') {
@@ -23,7 +27,7 @@ pipeline {
                 sh label: '', returnStatus: true, script: 'terraform workspace new prod'
                 sh 'terraform init'
                 sh 'terraform workspace select prod'
-                sh 'terraform apply -var-file=prod.tfvars --auto-approve'
+                sh "ansible-playbook ansterraform.yml --extra-vars app_env=prod"
             }
         }
     }
