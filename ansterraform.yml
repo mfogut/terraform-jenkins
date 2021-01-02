@@ -10,6 +10,6 @@
       project_path: "./"
       state: "{{ state }}"
       force_init: true
-      backend_config_file: backend_config.tf
+      backend_config_files: backend_config.tf
       variables_files: "{{ app_env }}.tfvars"
       workspace: "{{ app_env }}"
