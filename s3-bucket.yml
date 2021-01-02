@@ -9,8 +9,10 @@
   tasks:
   - name: Install boto3
     pip:
-      name: boto3
-      state: present
+      name: 
+      - boto3
+      - botocore
+      state: "{{ state }}"
     become: yes
 
   #- name: Install boto
@@ -23,6 +25,7 @@
     s3_bucket:
       name: "{{ s3_bucket }}"
       state: "{{ state }}"
+      region: "{{ region }}"
     become: yes
 
   - name: Create dynamo table with primary key
