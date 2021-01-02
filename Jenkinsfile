@@ -12,7 +12,6 @@ pipeline {
         stage('First initalize') {
             steps{
                 sh 'terraform init'
-                sh 'terraform workspace select default'
             }
         }
         stage('Terraform init and apply -dev') {
