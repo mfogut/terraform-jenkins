@@ -20,6 +20,7 @@ pipeline {
                 sh 'terraform init'
                 sh 'terraform workspace select dev'
                 sh "ansible-playbook ansterraform.yml"
+                sh 'terraform init'
             }        
         }
         stage('Terraform init and apply -prod') {
@@ -28,6 +29,7 @@ pipeline {
                 sh 'terraform init'
                 sh 'terraform workspace select prod'
                 sh "ansible-playbook ansterraform.yml --extra-vars app_env=prod"
+                sh 'terraform init'
             }
         }
     }
