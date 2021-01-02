@@ -9,9 +9,7 @@
   tasks:
   - name: Install boto3
     pip:
-      name: 
-      - boto3
-      - botocore
+      name: boto3
       state: "{{ state }}"
     become: yes
 
