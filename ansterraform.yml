@@ -2,9 +2,6 @@
 - hosts: localhost
   vars:
     state: present
-    s3_bucket: fatih-terraform-backup
-    key: terraform.tfstate
-    region: us-east-1
     app_env: dev
 
   tasks:

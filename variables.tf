@@ -18,3 +18,15 @@ variable "private_subnet_cidr" {
     default = "10.20.2.0/24" 
 }
 
+variable "dynamodb_table" {
+    default = "tf-backup"
+}
+
+variable "key" {
+    default = "terraform.tfstate"
+}
+
+variable "s3_bucket" {
+    default = "fatih-terraform-backup"
+}
+
