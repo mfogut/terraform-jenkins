@@ -13,11 +13,11 @@
       state: "{{ state }}"
     become: yes
 
-  #- name: Install boto
-  #  pip:
-  #    name: boto
-  #    state: present
-  #  become: yes
+  - name: Install boto
+    pip:
+      name: boto
+      state: present
+    become: yes
 
   - name: Create S3 bucket
     s3_bucket:
